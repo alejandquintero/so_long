@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 21:23:04 by aquinter          #+#    #+#             */
-/*   Updated: 2023/12/23 23:31:47 by aquinter         ###   ########.fr       */
+/*   Updated: 2023/12/26 22:15:09 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_list
 # include <unistd.h>
 # include <stdio.h>
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t n);
 char	*get_next_line(int fd);
 char	*read_next_line(int fd, char *cache, char *buffer);
 char	*build_line(char **cache);
@@ -47,12 +46,15 @@ char	*ft_strchr(const char *s, int c);
 int		clean_cache(char **cache, size_t len, char *nl_ptr);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlen(const char *s);
-void	read_map(char *file);
+int		read_map(int fd);
 void	ft_free_memory(void **mem, size_t size);
 void	print_matrix(char **matrix);
-void	create_matrix(char *content);
+int		create_matrix(char *content);
 void	*ft_calloc(size_t count, size_t size);
 char	**ft_split(char const *s, char c);
 void	ft_bzero(void *s, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_isascii(int c);
+char	*ft_strrchr(const char *s, int c);
 
 #endif

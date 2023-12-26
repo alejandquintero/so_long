@@ -6,24 +6,22 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 21:44:00 by aquinter          #+#    #+#             */
-/*   Updated: 2023/12/23 23:42:31 by aquinter         ###   ########.fr       */
+/*   Updated: 2023/12/26 22:45:22 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-void	create_matrix(char *content)
+int	create_matrix(char *content)
 {
 	char	**matrix;
 
 	matrix = ft_split(content, '\n');
-	if (!matrix)
-	{
-		free(content);
-		// return (NULL);
-	}
 	free(content);
+	if (!matrix)
+		return (0);
 	print_matrix(matrix);
+	return (1);
 }
 
 void	print_matrix(char **matrix)
@@ -39,55 +37,75 @@ void	print_matrix(char **matrix)
 	ft_free_memory((void **)matrix, i);
 }
 
-void	read_map(char *file)
+int	is_valid_extension_file(char *file)
 {
-	int		fd;
+	char	*ptr;
+
+	ptr = ft_strrchr(file, '.');
+	if (ptr)
+	{
+		if (ft_strncmp(ptr, ".ber", ft_strlen(ptr)) == 0)
+			return (1);
+	}
+	return (0);
+}
+
+int	read_map(int fd)
+{
 	char	*line;
 	char	*content;
 	char	*aux;
-	size_t	ptr_extension;
 
-	ptr_extension = ft_strlen(file) - 4;
 	content = NULL;
-	if (ft_strnstr(file + ptr_extension, ".ber", 4))
+	line = get_next_line(fd);
+	if (*line == '\n')
 	{
-		fd = open(file, O_RDONLY);
-		if (fd == ERROR)
-			perror("Error\nCould not open the file");
-		else
+		free(line);
+		write(1, "Error\nInvalid map", 17);
+		return (0);
+	}
+	while (line != NULL)
+	{
+		aux = content;
+		content = ft_strjoin(content, line);
+		free(aux);
+		free(line);
+		if (!content)
+			return (0);
+		line = get_next_line(fd);
+		if (line && *line == '\n')
 		{
-			line = get_next_line(fd);
-			while (line != NULL)
-			{
-				aux = content;
-				content = ft_strjoin(content, line);
-				if (!content)
-				{
-					free(aux);
-					free(line);
-					free(content);
-					// return (NULL);
-				}
-				free(aux);
-				free(line);
-				line = get_next_line(fd);
-			}
-			close(fd);
-			if (content != NULL)
-				create_matrix(content);
+			free(content);
+			free(line);
+			write(1, "Error\nInvalid map", 17);
+			return (0);
 		}
 	}
-	else
-		perror("Error\nExtension file is not valid");
+	if (content != NULL)
+		return (create_matrix(content));
+	return (1);
 }
 
 int	main(int argc, char *argv[])
 {
+	int	fd;
+
 	if (argc != 2)
 		write(1, "Error\nUsage ./so_long \"maps/map.ber\"", 36);
 	else
 	{
-		read_map(argv[1]);
+		if (is_valid_extension_file(argv[1]) == 1)
+		{
+			fd = open(argv[1], O_RDONLY);
+			if (fd == ERROR)
+				perror("Error\nCould not open the file");
+			read_map(fd);
+			close(fd);
+		}
+		else
+		{
+			write(1, "Error\nInvalid extension file", 28);
+		}
 	}
 	return (0);
 }
