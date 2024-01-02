@@ -6,7 +6,7 @@
 #    By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/22 21:16:17 by aquinter          #+#    #+#              #
-#    Updated: 2023/12/26 22:44:11 by aquinter         ###   ########.fr        #
+#    Updated: 2024/01/02 23:02:14 by aquinter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,18 +18,31 @@ CFLAGS = -Wextra -Werror -Wall -fsanitize=address
 
 RM = rm -rf
 
-UTILS =  utils/get_next_line.c utils/get_next_line_utils.c utils/ft_strrchr.c \
-	utils/ft_strncmp.c utils/ft_free_memory.c utils/ft_split.c \
-	utils/ft_calloc.c utils/ft_bzero.c utils/ft_isascii.c
+PATH_UTILS = src/utils
 
-SRC = src/so_long.c 
+PATH_GAMEPLAY = src/gameplay
 
-# OBJ = ${SRC:%.c=%.o}
+PATH_VALIDATIONS = src/validation
+
+UTILS = ${PATH_UTILS}/get_next_line.c \
+		${PATH_UTILS}/get_next_line_utils.c \
+		${PATH_UTILS}/ft_strrchr.c \
+		${PATH_UTILS}/ft_strncmp.c \
+		${PATH_UTILS}/ft_free_memory.c \
+		${PATH_UTILS}/ft_split.c \
+		${PATH_UTILS}/ft_calloc.c \
+		${PATH_UTILS}/ft_bzero.c \
+		${PATH_UTILS}/ft_isascii.c \
+		${PATH_UTILS}/ft_print_msg.c \
+
+VALIDATIONS = ${PATH_VALIDATIONS}/file_validator.c
+
+INIT = src/init.c 
 
 all: ${NAME}
 
 ${NAME}:
-	${CC} ${CFLAGS} ${UTILS} ${SRC} -o ${NAME}
+	${CC} ${CFLAGS} ${INIT} ${VALIDATIONS} ${UTILS} -o ${NAME}
 	
 clean:
 	${RM} ${OBJ}

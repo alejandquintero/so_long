@@ -3,6 +3,7 @@
 		"stdio.h": "c",
 		"so_long.h": "c",
 		"unistd.h": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"cstdlib": "c"
 	}
 }

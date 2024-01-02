@@ -6,11 +6,11 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 19:04:25 by aquinter          #+#    #+#             */
-/*   Updated: 2023/12/23 20:58:18 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/02 23:06:06 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h"
+#include "../../include/so_long.h"
 
 size_t	ft_strlen(const char *s)
 {

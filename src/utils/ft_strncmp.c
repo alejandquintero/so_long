@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/16 22:34:32 by aquinter          #+#    #+#             */
-/*   Updated: 2023/12/26 21:43:59 by aquinter         ###   ########.fr       */
+/*   Created: 2023/09/16 23:00:05 by aquinter          #+#    #+#             */
+/*   Updated: 2024/01/02 18:09:52 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h"
+#include "../../include/so_long.h"
 
-char	*ft_strrchr(const char *s, int c)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	*pos;
+	size_t	i;
 
-	pos = (char *)s;
-	while (*s != '\0')
+	i = 0;
+	while ((i < n) && (s1[i] != '\0' || s2[i] != '\0'))
 	{
-		if (*s == (char)c)
-			pos = (char *)s;
-		s++;
+		if (s1[i] != s2[i])
+		{
+			if (ft_isascii(s1[i]) == 1 && ft_isascii(s2[i]) == 1)
+				return (s1[i] - s2[i]);
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		}
+		i++;
 	}
-	if (*s == (char)c)
-		return ((char *)s);
-	if (*pos == (char)c)
-		return (pos);
-	return (NULL);
+	return (0);
 }

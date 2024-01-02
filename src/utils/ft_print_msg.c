@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_memory.c                                   :+:      :+:    :+:   */
+/*   ft_print_msg.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/23 22:08:03 by aquinter          #+#    #+#             */
-/*   Updated: 2023/12/23 23:32:56 by aquinter         ###   ########.fr       */
+/*   Created: 2024/01/02 18:40:36 by aquinter          #+#    #+#             */
+/*   Updated: 2024/01/02 22:08:13 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h"
+#include "../../include/so_long.h"
 
-void	ft_free_memory(void **mem, size_t size)
+void    ft_print_msg(char *msg)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < size)
-	{
-		free(mem[i]);
-		i++;
-	}
-	free(mem);
+    write(1, msg, ft_strlen(msg));
 }

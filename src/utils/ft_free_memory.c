@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_free_memory.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/18 21:54:34 by aquinter          #+#    #+#             */
-/*   Updated: 2023/12/23 23:25:27 by aquinter         ###   ########.fr       */
+/*   Created: 2023/12/23 22:08:03 by aquinter          #+#    #+#             */
+/*   Updated: 2024/01/02 23:23:50 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h"
+#include "../../include/so_long.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	ft_free_memory(void **mem, size_t size)
 {
-	void	*mem;
+	size_t	i;
 
-	if (count == SIZE_MAX || size == SIZE_MAX)
-		return (NULL);
-	mem = malloc(count * size);
-	if (!mem)
-		return (NULL);
-	ft_bzero(mem, (count * size));
-	return (mem);
+	i = 0;
+	while (i < size)
+	{
+		free(mem[i]);
+		i++;
+	}
+	free(mem);
 }
