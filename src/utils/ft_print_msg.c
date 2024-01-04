@@ -6,13 +6,13 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 18:40:36 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/02 22:08:13 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/04 21:36:05 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-void    ft_print_msg(char *msg)
+void	ft_print_msg(char *msg)
 {
-    write(1, msg, ft_strlen(msg));
+	write(1, msg, ft_strlen(msg));
 }

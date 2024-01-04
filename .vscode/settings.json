@@ -4,6 +4,7 @@
 		"so_long.h": "c",
 		"unistd.h": "c",
 		"stdlib.h": "c",
-		"cstdlib": "c"
+		"cstdlib": "c",
+		"cerrno": "c"
 	}
 }

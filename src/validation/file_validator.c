@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:30:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/02 23:51:38 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/04 21:44:36 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,19 @@ void	create_matrix(char *content)
 {
 	char	**matrix;
 
-	matrix = ft_split(content, '\n');
-	free(content);
-	if (!matrix)
+	if (content != NULL)
 	{
-		ft_print_msg(SYS_MATRIX_ERROR);
-		exit(EXIT_FAILURE);
+		matrix = ft_split(content, '\n');
+		free(content);
+		if (!matrix)
+		{
+			ft_print_msg(SYS_MATRIX_ERROR);
+			exit(EXIT_FAILURE);
+		}
+		print_matrix(matrix);
 	}
-	print_matrix(matrix);
+	else
+		ft_print_msg(MAP_NONEXISTENT);
 }
 
 void	print_matrix(char **matrix)
@@ -59,14 +64,15 @@ void	read_map(int fd)
 	char	*aux;
 
 	content = NULL;
-	while (line = get_next_line(fd) != NULL)
+	line = get_next_line(fd);
+	while (line)
 	{
 		if (*line == '\n')
 		{
 			ft_print_msg(MAP_NOT_VALID);
 			free(content);
 			free(line);
-			exit(EXIT_FAILURE);
+			exit(EXIT_SUCCESS);
 		}
 		aux = content;
 		content = ft_strjoin(content, line);
@@ -77,11 +83,9 @@ void	read_map(int fd)
 			ft_print_msg(SYS_UNEXPECTED_ERROR);
 			exit(EXIT_FAILURE);
 		}
+		line = get_next_line(fd);
 	}
-	if (content != NULL)
-		create_matrix(content);
-	else
-		ft_print_msg(ERROR_READING_FILE);
+	create_matrix(content);
 }
 
 void	validate_file(char *file)

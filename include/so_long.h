@@ -6,25 +6,12 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 21:23:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/02 23:33:26 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/04 21:36:10 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
-# endif
-
-# define ERROR -1
-# define SUCCESS 0
-
-typedef struct s_list
-{
-	char			*content;
-	struct s_list 	*next;
-} t_list;
 
 # include <stdlib.h>
 # include <stdint.h>
@@ -32,6 +19,13 @@ typedef struct s_list
 # include <unistd.h>
 # include <stdio.h>
 # include "error_messages.h"
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
+# define ERROR -1
+# define SUCCESS 0
 
 char	*get_next_line(int fd);
 char	*read_next_line(int fd, char *cache, char *buffer);
@@ -53,7 +47,7 @@ void	ft_bzero(void *s, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_isascii(int c);
 char	*ft_strrchr(const char *s, int c);
-void    ft_print_msg(char *msg);
+void	ft_print_msg(char *msg);
 void	validate_file(char *file);
 
 #endif

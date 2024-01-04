@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 22:14:06 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/02 23:45:11 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/04 20:43:43 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
 # define FILE_OPENING_ERROR "Error\nCould not open the file"
 # define SYS_MATRIX_ERROR "Error\nCould not create matrix"
 # define ERROR_READING_FILE "Error\nFailed to read content from the given file"
+# define MAP_NONEXISTENT "Error\nNo map to process"
 
 #endif
