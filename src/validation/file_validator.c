@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:30:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/04 21:44:36 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/13 22:45:11 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,67 +25,71 @@ int	is_valid_extension(char *file)
 	return (0);
 }
 
-void	create_matrix(char *content)
+void	init_struct(char *content)
 {
-	char	**matrix;
+	t_game	*game;
 
-	if (content != NULL)
+	game = malloc(sizeof(t_game));
+	if (!game)
 	{
-		matrix = ft_split(content, '\n');
-		free(content);
-		if (!matrix)
-		{
-			ft_print_msg(SYS_MATRIX_ERROR);
-			exit(EXIT_FAILURE);
-		}
-		print_matrix(matrix);
+		ft_print_msg(SYS_UNEXPECTED_ERROR);
+		exit(EXIT_FAILURE);
 	}
-	else
-		ft_print_msg(MAP_NONEXISTENT);
+	game->map = ft_split(content, '\n');
+	free(content);
+	if (!game->map)
+	{
+		ft_print_msg(SYS_MATRIX_ERROR);
+		exit(EXIT_FAILURE);
+	}
+	game->width = 0;
+	game->height = 0;
+	game->player_position = NULL;
+	game->exit_position = NULL;
+	game->allow_exit = 0;
+	game->collectables = 0;
+	validate_map(game);
 }
 
-void	print_matrix(char **matrix)
+char	*validate_readed_line(char *line, char *content)
 {
-	int	i;
+	char	*aux;
 
-	i = 0;
-	while (matrix[i] != NULL)
+	if (*line == '\n')
 	{
-		printf("%d - %s\n", i, matrix[i]);
-		i++;
+		ft_print_msg(MAP_NOT_VALID);
+		free(content);
+		free(line);
+		exit(EXIT_SUCCESS);
 	}
-	ft_free_memory((void **)matrix, i);
+	aux = content;
+	content = ft_strjoin(content, line);
+	free(aux);
+	free(line);
+	if (!content)
+	{
+		ft_print_msg(SYS_UNEXPECTED_ERROR);
+		exit(EXIT_FAILURE);
+	}
+	return (content);
 }
 
 void	read_map(int fd)
 {
 	char	*line;
 	char	*content;
-	char	*aux;
 
 	content = NULL;
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (*line == '\n')
-		{
-			ft_print_msg(MAP_NOT_VALID);
-			free(content);
-			free(line);
-			exit(EXIT_SUCCESS);
-		}
-		aux = content;
-		content = ft_strjoin(content, line);
-		free(aux);
-		free(line);
-		if (!content)
-		{
-			ft_print_msg(SYS_UNEXPECTED_ERROR);
-			exit(EXIT_FAILURE);
-		}
+		content = validate_readed_line(line, content);
 		line = get_next_line(fd);
 	}
-	create_matrix(content);
+	if (content)
+		init_struct(content);
+	else
+		ft_print_msg(MAP_NONEXISTENT);
 }
 
 void	validate_file(char *file)

@@ -6,7 +6,7 @@
 #    By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/22 21:16:17 by aquinter          #+#    #+#              #
-#    Updated: 2024/01/02 23:02:14 by aquinter         ###   ########.fr        #
+#    Updated: 2024/01/13 22:46:46 by aquinter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ UTILS = ${PATH_UTILS}/get_next_line.c \
 		${PATH_UTILS}/ft_isascii.c \
 		${PATH_UTILS}/ft_print_msg.c \
 
-VALIDATIONS = ${PATH_VALIDATIONS}/file_validator.c
+VALIDATIONS = ${PATH_VALIDATIONS}/file_validator.c \
+			  ${PATH_VALIDATIONS}/map_validator.c
 
 INIT = src/init.c 
 

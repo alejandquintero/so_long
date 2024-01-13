@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 21:23:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/04 21:36:10 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/13 22:44:51 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,23 @@
 # define ERROR -1
 # define SUCCESS 0
 
+typedef struct s_game
+{
+	char					**map;
+	int						width;
+	int						height;
+	struct s_coordinates	*player_position;
+	struct s_coordinates	*exit_position;
+	int						allow_exit;
+	int						collectables;
+}	t_game;
+
+typedef struct s_coordinates
+{
+	int	x;
+	int	y;
+}	t_coordinates;
+
 char	*get_next_line(int fd);
 char	*read_next_line(int fd, char *cache, char *buffer);
 char	*build_line(char **cache);
@@ -40,7 +57,6 @@ size_t	ft_strlen(const char *s);
 void	read_map(int fd);
 void	ft_free_memory(void **mem, size_t size);
 void	print_matrix(char **matrix);
-void	create_matrix(char *content);
 void	*ft_calloc(size_t count, size_t size);
 char	**ft_split(char const *s, char c);
 void	ft_bzero(void *s, size_t n);
@@ -49,5 +65,6 @@ int		ft_isascii(int c);
 char	*ft_strrchr(const char *s, int c);
 void	ft_print_msg(char *msg);
 void	validate_file(char *file);
+void	validate_map(t_game *game);
 
 #endif
