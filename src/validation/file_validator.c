@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:30:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/13 22:45:11 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/14 01:04:25 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	init_struct(char *content)
 	game = malloc(sizeof(t_game));
 	if (!game)
 	{
+		free(content);
 		ft_print_msg(SYS_UNEXPECTED_ERROR);
 		exit(EXIT_FAILURE);
 	}
