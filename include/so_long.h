@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 21:23:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/13 22:44:51 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/15 22:51:27 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int		clean_cache(char **cache, size_t len, char *nl_ptr);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlen(const char *s);
 void	read_map(int fd);
-void	ft_free_memory(void **mem, size_t size);
 void	print_matrix(char **matrix);
 void	*ft_calloc(size_t count, size_t size);
 char	**ft_split(char const *s, char c);
@@ -66,5 +65,8 @@ char	*ft_strrchr(const char *s, int c);
 void	ft_print_msg(char *msg);
 void	validate_file(char *file);
 void	validate_map(t_game *game);
+void	free_matrix(void **mem, size_t size);
+void	free_game(t_game *game);
+void	free_game_error(t_game *game, char	*msg, int exit_status);
 
 #endif

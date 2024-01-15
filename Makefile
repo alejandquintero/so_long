@@ -6,7 +6,7 @@
 #    By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/22 21:16:17 by aquinter          #+#    #+#              #
-#    Updated: 2024/01/14 00:41:47 by aquinter         ###   ########.fr        #
+#    Updated: 2024/01/15 22:46:12 by aquinter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ UTILS = ${PATH_UTILS}/get_next_line.c \
 		${PATH_UTILS}/get_next_line_utils.c \
 		${PATH_UTILS}/ft_strrchr.c \
 		${PATH_UTILS}/ft_strncmp.c \
-		${PATH_UTILS}/ft_free_memory.c \
+		${PATH_UTILS}/free_memory.c \
 		${PATH_UTILS}/ft_split.c \
 		${PATH_UTILS}/ft_calloc.c \
 		${PATH_UTILS}/ft_bzero.c \
