@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:08:03 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/15 23:08:12 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/17 21:44:56 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	free_game_error(t_game *game, char	*msg, int exit_status)
 void	free_game(t_game *game)
 {
 	free_matrix((void **)game->map, game->height);
-	free(game->player_position);
-	free(game->exit_position);
+	free(game->player);
+	free(game->exit);
 	free(game);
 }

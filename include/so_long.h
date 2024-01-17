@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 21:23:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/15 22:51:27 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/17 21:58:21 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef struct s_game
 	char					**map;
 	int						width;
 	int						height;
-	struct s_coordinates	*player_position;
-	struct s_coordinates	*exit_position;
+	struct s_coordinates	*player;
+	struct s_coordinates	*exit;
 	int						allow_exit;
 	int						collectables;
 }	t_game;
@@ -55,7 +55,6 @@ int		clean_cache(char **cache, size_t len, char *nl_ptr);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlen(const char *s);
 void	read_map(int fd);
-void	print_matrix(char **matrix);
 void	*ft_calloc(size_t count, size_t size);
 char	**ft_split(char const *s, char c);
 void	ft_bzero(void *s, size_t n);

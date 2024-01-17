@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:30:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/14 01:04:25 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/17 21:43:27 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	init_struct(char *content)
 	}
 	game->width = 0;
 	game->height = 0;
-	game->player_position = NULL;
-	game->exit_position = NULL;
+	game->player = NULL;
+	game->exit = NULL;
 	game->allow_exit = 0;
 	game->collectables = 0;
 	validate_map(game);

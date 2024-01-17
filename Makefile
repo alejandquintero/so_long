@@ -6,7 +6,7 @@
 #    By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/22 21:16:17 by aquinter          #+#    #+#              #
-#    Updated: 2024/01/15 22:46:12 by aquinter         ###   ########.fr        #
+#    Updated: 2024/01/17 22:53:16 by aquinter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ INIT = src/init.c
 all: ${NAME}
 
 ${NAME}:
-	${CC} ${CFLAGS} ${INIT} ${VALIDATIONS} ${UTILS} -o ${NAME}
+	${CC} ${CFLAGS} ${INIT} ${VALIDATIONS} -Imlx ${UTILS} -o ${NAME}
 	
 clean:
 	${RM} ${OBJ}
