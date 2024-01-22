@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:30:25 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/17 22:48:57 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/22 23:08:00 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ void	validate_game_content(t_game *game)
 	// Aqui deberiamos validar que sea jugable
 	printf("Player (X,Y) (%d,%d)\n", game->player->x, game->player->y);
 	printf("Exit (X,Y) (%d,%d)\n", game->exit->x, game->exit->y);
-	printf("Collectables %d", game->collectables);
-	free_game(game);
+	printf("Collectables %d\n", game->collectables);
+	printf("w %d h%d\n", game->width, game->height);
+	game_init(game);
+	// free_game(game);
 }
 
 void	validate_map(t_game *game)

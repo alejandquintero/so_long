@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 21:23:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/17 21:58:21 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/22 22:12:25 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ typedef struct s_game
 	struct s_coordinates	*exit;
 	int						allow_exit;
 	int						collectables;
+	void 					*mlx;
+	void					*block;
+	void					*npc;
+	void					*grass;
+	void					*castle;
 }	t_game;
 
 typedef struct s_coordinates
@@ -67,5 +72,6 @@ void	validate_map(t_game *game);
 void	free_matrix(void **mem, size_t size);
 void	free_game(t_game *game);
 void	free_game_error(t_game *game, char	*msg, int exit_status);
+void	game_init(t_game *game);
 
 #endif
