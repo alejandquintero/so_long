@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 21:23:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/22 22:12:25 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/24 22:21:16 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,17 @@ typedef struct s_game
 	char					**map;
 	int						width;
 	int						height;
-	struct s_coordinates	*player;
-	struct s_coordinates	*exit;
+	int						p_npc;
+	int						exit;
 	int						allow_exit;
 	int						collectables;
 	void 					*mlx;
+	void 					*win;
 	void					*block;
-	void					*npc;
+	void					*i_npc;
 	void					*grass;
 	void					*castle;
 }	t_game;
-
-typedef struct s_coordinates
-{
-	int	x;
-	int	y;
-}	t_coordinates;
 
 char	*get_next_line(int fd);
 char	*read_next_line(int fd, char *cache, char *buffer);
@@ -68,10 +63,10 @@ int		ft_isascii(int c);
 char	*ft_strrchr(const char *s, int c);
 void	ft_print_msg(char *msg);
 void	validate_file(char *file);
-void	validate_map(t_game *game);
+void	validate_map(t_game *g);
 void	free_matrix(void **mem, size_t size);
-void	free_game(t_game *game);
-void	free_game_error(t_game *game, char	*msg, int exit_status);
-void	game_init(t_game *game);
+void	free_game(t_game *g);
+void	free_game_error(t_game *g, char	*msg, int exit_status);
+void	window_init(t_game *g);
 
 #endif

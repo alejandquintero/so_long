@@ -6,90 +6,76 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:30:25 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/22 23:08:00 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/24 21:22:21 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-void	validate_game_content(t_game *game)
+void	validate_game_content(t_game *g)
 {
-	if (!game->player)
-		free_game_error(game, NO_PLAYER, EXIT_SUCCESS);
-	if (!game->exit)
-		free_game_error(game, NO_EXIT, EXIT_SUCCESS);
-	if (game->collectables == 0)
-		free_game_error(game, NO_COLLECTABLES, EXIT_SUCCESS);
-	// Aqui deberiamos validar que sea jugable
-	printf("Player (X,Y) (%d,%d)\n", game->player->x, game->player->y);
-	printf("Exit (X,Y) (%d,%d)\n", game->exit->x, game->exit->y);
-	printf("Collectables %d\n", game->collectables);
-	printf("w %d h%d\n", game->width, game->height);
-	game_init(game);
-	// free_game(game);
+	if (!g->p_npc)
+		free_game_error(g, NO_PLAYER, 0);
+	if (!g->exit)
+		free_game_error(g, NO_EXIT, 0);
+	if (g->collectables == 0)
+		free_game_error(g, NO_COLLECTABLES, 0);
+	printf("Collectables %d\n", g->collectables);
+	printf("w %d h%d\n", g->width, g->height);
+	window_init(g);
 }
 
-void	validate_map(t_game *game)
+void	validate_characters(t_game *g, int i, int j)
+{
+	if (((j == 0 || j == g->height - 1) && g->map[j][i] != '1') ||
+		((i == 0 || i == g->width - 1) && g->map[j][i] != '1')
+	)
+		free_game_error(g, MAP_NOT_VALID, 0);
+	else if (g->map[j][i] == 'P')
+	{
+		if (!g->p_npc)
+			g->p_npc = 1;
+		else
+			free_game_error(g, MORE_THAN_ONE_PLAYER, 0);
+	}
+	else if (g->map[j][i] == 'E')
+	{
+		if (!g->exit)
+			g->exit = 1;
+		else
+			free_game_error(g, MORE_THAN_ONE_EXIT, 0);
+	}
+	else if (g->map[j][i] == 'C')
+		g->collectables++;
+	else if (g->map[j][i] != '0' && g->map[j][i] != '1')
+		free_game_error(g, MAP_NOT_VALID, 0);
+}
+
+void	validate_map(t_game *g)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (game->map[i] != NULL)
+	while (g->map[i] != NULL)
 		i++;
-	game->height = i;
+	g->height = i;
 	i = 0;
-	while (game->map[0][i])
+	while (g->map[0][i])
 		i++;
-	game->width = i;
-	if (game->width < 3 || game->height < 3)
-		free_game_error(game, MAP_NOT_VALID, EXIT_SUCCESS);
+	g->width = i;
 	j = 0;
-	while (game->map[j])
+	while (g->map[j])
 	{
 		i = 0;
-		while (game->map[j][i])
+		while (g->map[j][i])
 		{
-			if ((j == 0 || j == game->height - 1) && game->map[j][i] != '1')
-				free_game_error(game, MAP_NOT_VALID, EXIT_SUCCESS);
-			else if ((i == 0 || i == game->width - 1) && game->map[j][i] != '1')
-				free_game_error(game, MAP_NOT_VALID, EXIT_SUCCESS);
-			// Tengo que pensar como poder hacer esto escalable con algun patron de diseno
-			else if (game->map[j][i] == 'C')
-				game->collectables++;
-			else if(game->map[j][i] == 'P')
-			{
-				if (!game->player)
-				{
-					game->player = malloc(sizeof(t_coordinates));
-					if(!game->player)
-						free_game_error(game, SYS_UNEXPECTED_ERROR, EXIT_SUCCESS);
-					game->player->x = i;
-					game->player->y = j;
-				}
-				else
-					free_game_error(game, MORE_THAN_ONE_PLAYER, EXIT_SUCCESS);
-			}
-			else if(game->map[j][i] == 'E')
-			{
-				if (!game->exit)
-				{
-					game->exit = malloc(sizeof(t_coordinates));
-					if(!game->exit)
-						free_game_error(game, SYS_UNEXPECTED_ERROR, EXIT_SUCCESS);
-					game->exit->x = i;
-					game->exit->y = j;
-				}
-				else
-					free_game_error(game, MORE_THAN_ONE_EXIT, EXIT_SUCCESS);
-			}
-			else if (game->map[j][i] != '0' && game->map[j][i] != '1')
-				free_game_error(game, MAP_NOT_VALID, EXIT_SUCCESS);
+			validate_characters(g, i, j);
 			i++;
 		}
-		if (i != game->width)
-			free_game_error(game, MAP_NOT_SQUARE, EXIT_SUCCESS);
+		if (i != g->width)
+			free_game_error(g, MAP_NOT_SQUARE, 0);
 		j++;
 	}
-	validate_game_content(game);
+	validate_game_content(g);
 }

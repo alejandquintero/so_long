@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:30:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/22 22:57:33 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/24 20:32:03 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,29 +27,29 @@ int	is_valid_extension(char *file)
 
 void	init_struct(char *content)
 {
-	t_game	*game;
+	t_game	*g;
 
-	game = malloc(sizeof(t_game));
-	if (!game)
+	g = malloc(sizeof(t_game));
+	if (!g)
 	{
 		free(content);
 		ft_print_msg(SYS_UNEXPECTED_ERROR);
-		exit(EXIT_FAILURE);
+		exit(0);
 	}
-	game->map = ft_split(content, '\n');
+	g->map = ft_split(content, '\n');
 	free(content);
-	if (!game->map)
+	if (!g->map)
 	{
 		ft_print_msg(SYS_MATRIX_ERROR);
-		exit(EXIT_FAILURE);
+		exit(0);
 	}
-	game->width = 0;
-	game->height = 0;
-	game->player = NULL;
-	game->exit = NULL;
-	game->allow_exit = 0;
-	game->collectables = 0;
-	validate_map(game);
+	g->width = 0;
+	g->height = 0;
+	g->p_npc = 0;
+	g->exit = 0;
+	g->allow_exit = 0;
+	g->collectables = 0;
+	validate_map(g);
 }
 
 char	*validate_readed_line(char *line, char *content)
@@ -70,7 +70,7 @@ char	*validate_readed_line(char *line, char *content)
 	if (!content)
 	{
 		ft_print_msg(SYS_UNEXPECTED_ERROR);
-		exit(EXIT_FAILURE);
+		exit(0);
 	}
 	return (content);
 }
@@ -103,7 +103,7 @@ void	validate_file(char *file)
 		if (fd == ERROR)
 		{
 			perror(FILE_OPENING_ERROR);
-			exit(EXIT_FAILURE);
+			exit(1);
 		}
 		read_map(fd);
 		close(fd);
