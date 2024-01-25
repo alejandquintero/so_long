@@ -81,8 +81,13 @@ void	window_init(t_game *g)
 	g->castle = mlx_xpm_file_to_image(g->mlx, "xpm/castle.xpm", &w, &h);
 	print_map(g);
 	mlx_key_hook(g->win, key_hook, g);
-	mlx_loop(g->mlx);
+	//mlx_loop(g->mlx);
+	mlx_destroy_image(g->mlx, g->block);
+	mlx_destroy_image(g->mlx, g->i_npc);
+	mlx_destroy_image(g->mlx, g->grass);
+	mlx_destroy_image(g->mlx, g->castle);
 	mlx_destroy_window(g->mlx, g->win);
+	mlx_destroy_display(g->mlx);
 	free(g->mlx);
 	free_game(g);
 }
