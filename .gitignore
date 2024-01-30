@@ -1,1 +1,3 @@
 *.Identifier
+*.o
+so_long

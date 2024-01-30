@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 21:23:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/24 22:21:16 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/30 11:04:30 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,14 @@ typedef struct s_game
 	int						width;
 	int						height;
 	int						p_npc;
+	int						c_npc[2];
 	int						exit;
 	int						allow_exit;
 	int						collectables;
-	void 					*mlx;
-	void 					*win;
+	void					*mlx;
+	void					*win;
+	int						win_x;
+	int						win_y;
 	void					*block;
 	void					*i_npc;
 	void					*grass;
@@ -68,5 +71,6 @@ void	free_matrix(void **mem, size_t size);
 void	free_game(t_game *g);
 void	free_game_error(t_game *g, char	*msg, int exit_status);
 void	window_init(t_game *g);
+char	*ft_itoa(int n);
 
 #endif

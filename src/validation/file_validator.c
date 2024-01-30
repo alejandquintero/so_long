@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:30:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/24 20:32:03 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/30 11:11:08 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,19 @@ void	init_struct(char *content)
 	g->width = 0;
 	g->height = 0;
 	g->p_npc = 0;
+	g->c_npc[0] = 0;
+	g->c_npc[1] = 0;
 	g->exit = 0;
 	g->allow_exit = 0;
 	g->collectables = 0;
+	g->mlx = NULL;
+	g->win = NULL;
+	g->win_x = 0;
+	g->win_y = 0;
+	g->block = NULL;
+	g->i_npc = NULL;
+	g->grass = NULL;
+	g->castle = NULL;
 	validate_map(g);
 }
 

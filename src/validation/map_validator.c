@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:30:25 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/24 21:22:21 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/25 19:47:47 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,57 +25,61 @@ void	validate_game_content(t_game *g)
 	window_init(g);
 }
 
-void	validate_characters(t_game *g, int i, int j)
+void	validate_characters(t_game *g, int x, int y)
 {
-	if (((j == 0 || j == g->height - 1) && g->map[j][i] != '1') ||
-		((i == 0 || i == g->width - 1) && g->map[j][i] != '1')
+	if (((y == 0 || y == g->height - 1) && g->map[y][x] != '1') ||
+		((x == 0 || x == g->width - 1) && g->map[y][x] != '1')
 	)
 		free_game_error(g, MAP_NOT_VALID, 0);
-	else if (g->map[j][i] == 'P')
+	else if (g->map[y][x] == 'P')
 	{
 		if (!g->p_npc)
+		{
+			g->c_npc[0] = y;
+			g->c_npc[1] = x;
 			g->p_npc = 1;
+		}
 		else
 			free_game_error(g, MORE_THAN_ONE_PLAYER, 0);
 	}
-	else if (g->map[j][i] == 'E')
+	else if (g->map[y][x] == 'E')
 	{
 		if (!g->exit)
 			g->exit = 1;
 		else
 			free_game_error(g, MORE_THAN_ONE_EXIT, 0);
 	}
-	else if (g->map[j][i] == 'C')
+	else if (g->map[y][x] == 'C')
 		g->collectables++;
-	else if (g->map[j][i] != '0' && g->map[j][i] != '1')
+	else if (g->map[y][x] != '0' && g->map[y][x] != '1')
 		free_game_error(g, MAP_NOT_VALID, 0);
 }
 
 void	validate_map(t_game *g)
 {
-	int	i;
-	int	j;
+	int	x;
+	int	y;
 
-	i = 0;
-	while (g->map[i] != NULL)
-		i++;
-	g->height = i;
-	i = 0;
-	while (g->map[0][i])
-		i++;
-	g->width = i;
-	j = 0;
-	while (g->map[j])
+	x = 0;
+	while (g->map[x] != NULL)
+		x++;
+	g->height = x;
+	x = 0;
+	while (g->map[0][x])
+		x++;
+	g->width = x;
+	y = 0;
+	while (g->map[y])
 	{
-		i = 0;
-		while (g->map[j][i])
+		x = 0;
+		while (g->map[y][x])
 		{
-			validate_characters(g, i, j);
-			i++;
+			validate_characters(g, x, y);
+			x++;
 		}
-		if (i != g->width)
+		if (x != g->width)
 			free_game_error(g, MAP_NOT_SQUARE, 0);
-		j++;
+		y++;
 	}
 	validate_game_content(g);
 }

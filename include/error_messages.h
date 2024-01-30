@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 22:14:06 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/17 22:43:10 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/25 19:39:48 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # define ERROR_READING_FILE "Error\nFailed to read content from the given file"
 # define MAP_NONEXISTENT "Error\nNo map to process"
 # define MAP_NOT_SQUARE "Error\nThe map is not square"
-# define MORE_THAN_ONE_PLAYER "Error\nThe map contains more than one initial player position"
-# define MORE_THAN_ONE_EXIT "Error\nThe map contains more than one exit position"
+# define MORE_THAN_ONE_PLAYER "Error\nThe map contains more than one player"
+# define MORE_THAN_ONE_EXIT "Error\nThe map contains more than one exit"
 # define NO_PLAYER "Error\nThe map must have a player position"
 # define NO_EXIT "Error\nThe map must have an exit position"
 # define NO_COLLECTABLES "Error\nThe map must have at least one collectable"
