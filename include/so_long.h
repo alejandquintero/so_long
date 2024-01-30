@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 21:23:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/30 11:04:30 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/30 21:40:58 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdio.h>
+# include "../minilibx-linux/mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
 # include "error_messages.h"
 
 # ifndef BUFFER_SIZE
@@ -67,10 +70,16 @@ char	*ft_strrchr(const char *s, int c);
 void	ft_print_msg(char *msg);
 void	validate_file(char *file);
 void	validate_map(t_game *g);
-void	free_matrix(void **mem, size_t size);
-void	free_game(t_game *g);
+void	free_map(void **mem, size_t size);
+void	close_window(t_game *game);
+void	finish_game(t_game *g);
 void	free_game_error(t_game *g, char	*msg, int exit_status);
-void	window_init(t_game *g);
+void	init_window(t_game *g);
 char	*ft_itoa(int n);
+void	move_left(t_game *g);
+void	move_right(t_game *g);
+void	move_up(t_game *g);
+void	move_down(t_game *g);
+void	print_map(t_game *g);
 
 #endif

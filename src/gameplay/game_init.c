@@ -6,14 +6,11 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 21:45:30 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/30 12:06:51 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/01/30 22:10:36 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
-#include "../../minilibx-linux/mlx.h"
-#include <X11/X.h>
-#include <X11/keysym.h>
 
 void	draw_img(t_game *g, int x, int y)
 {
@@ -47,14 +44,8 @@ void	print_map(t_game *g)
 
 int on_destroy(t_game *g)
 {
-	mlx_destroy_image(g->mlx, g->block);
-	mlx_destroy_image(g->mlx, g->i_npc);
-	mlx_destroy_image(g->mlx, g->grass);
-	mlx_destroy_image(g->mlx, g->castle);
-	mlx_destroy_window(g->mlx, g->win);
-	mlx_destroy_display(g->mlx);
-	free(g->mlx);
-	free_game(g);
+	close_window(g);
+	finish_game(g);
 	exit(0);
 	return (0);
 }
@@ -64,22 +55,22 @@ int	on_keypress(int keycode, t_game *g)
 	(void)g;
 	if (keycode == XK_Escape)
 	{
-		mlx_destroy_image(g->mlx, g->block);
-		mlx_destroy_image(g->mlx, g->i_npc);
-		mlx_destroy_image(g->mlx, g->grass);
-		mlx_destroy_image(g->mlx, g->castle);
-		mlx_destroy_window(g->mlx, g->win);
-		mlx_destroy_display(g->mlx);
-		free(g->mlx);
-		free_game(g);
+		close_window(g);
+		finish_game(g);
 		exit(0);
-	}else{
-		ft_print_msg("Another key");
 	}
+	else if (keycode == XK_a || keycode == XK_A )
+		move_left(g);
+	else if (keycode == XK_d || keycode == XK_D)
+		move_right(g);
+	else if (keycode == XK_w || keycode == XK_W)
+		move_up(g);
+	else if (keycode == XK_s || keycode == XK_S)
+		move_down(g);
 	return (0);
 }
 
-void	window_init(t_game *g)
+void	init_window(t_game *g)
 {
 	int	w;
 	int	h;
@@ -89,7 +80,7 @@ void	window_init(t_game *g)
 	g->mlx = mlx_init();
 	if (!g->mlx)
 		free_game_error(g, SYS_UNEXPECTED_ERROR, 1);
-	g->block = mlx_xpm_file_to_image(g->mlx, "xpm/block.xpm", &w, &h);
+	g->block = mlx_xpm_file_to_image(g->mlx, "xpm/block-3.xpm", &w, &h);
 	g->i_npc = mlx_xpm_file_to_image(g->mlx, "xpm/npc.xpm", &w, &h);
 	g->grass = mlx_xpm_file_to_image(g->mlx, "xpm/grass.xpm", &w, &h);
 	g->castle = mlx_xpm_file_to_image(g->mlx, "xpm/castle.xpm", &w, &h);
