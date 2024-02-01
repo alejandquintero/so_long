@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 21:23:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/30 21:40:58 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/01 22:54:52 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_game
 	void					*i_npc;
 	void					*grass;
 	void					*castle;
+	void					*coin;
 }	t_game;
 
 char	*get_next_line(int fd);

@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 21:45:30 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/30 22:10:36 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/01 23:01:56 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	draw_img(t_game *g, int x, int y)
 		mlx_put_image_to_window(g->mlx, g->win, g->block, x * 50, y * 50);
 	else if (g->map[y][x] == '0')
 		mlx_put_image_to_window(g->mlx, g->win, g->grass, x * 50, y * 50);
+	else if (g->map[y][x] == 'C')
+		mlx_put_image_to_window(g->mlx, g->win, g->coin, x * 50, y * 50);
 	else if (g->map[y][x] == 'P')
 		mlx_put_image_to_window(g->mlx, g->win, g->i_npc, x * 50, y * 50);	
 	else if (g->map[y][x] == 'E')
@@ -80,10 +82,11 @@ void	init_window(t_game *g)
 	g->mlx = mlx_init();
 	if (!g->mlx)
 		free_game_error(g, SYS_UNEXPECTED_ERROR, 1);
-	g->block = mlx_xpm_file_to_image(g->mlx, "xpm/block-3.xpm", &w, &h);
-	g->i_npc = mlx_xpm_file_to_image(g->mlx, "xpm/npc.xpm", &w, &h);
-	g->grass = mlx_xpm_file_to_image(g->mlx, "xpm/grass.xpm", &w, &h);
-	g->castle = mlx_xpm_file_to_image(g->mlx, "xpm/castle.xpm", &w, &h);
+	g->block = mlx_xpm_file_to_image(g->mlx, "xpm/Brick.xpm", &w, &h);
+	g->i_npc = mlx_xpm_file_to_image(g->mlx, "xpm/mario-new.xpm", &w, &h);
+	g->grass = mlx_xpm_file_to_image(g->mlx, "xpm/grass-50.xpm", &w, &h);
+	g->castle = mlx_xpm_file_to_image(g->mlx, "xpm/castle-new.xpm", &w, &h);
+	g->coin = mlx_xpm_file_to_image(g->mlx, "xpm/coin.xpm", &w, &h);
 	g->win_x = g->width * 50;
 	g->win_y = g->height * 50;
 	g->win = mlx_new_window(g->mlx, g->win_x, g->win_y, "so_long");

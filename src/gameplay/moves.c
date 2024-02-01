@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 21:19:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/30 21:48:52 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/01 23:06:24 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ void	move_left(t_game *g)
 		c = g->map[y][x - 1];
 		if (c == 'C')
 		{
-			//
+			g->map[y][x] = '0';
+			g->map[y][x - 1] = 'P';
+			g->c_npc[1] = x - 1; 
 		}
 		else if (c == 'E')
 		{
@@ -54,7 +56,9 @@ void	move_right(t_game *g)
 		c = g->map[y][x + 1];
 		if (c == 'C')
 		{
-			// 
+			g->map[y][x] = '0';
+			g->map[y][x + 1] = 'P';
+			g->c_npc[1] = x + 1; 
 		}
 		else if (c == 'E')
 		{
@@ -83,7 +87,9 @@ void	move_up(t_game *g)
 		c = g->map[y - 1][x];
 		if (c == 'C')
 		{
-			//
+			g->map[y][x] = '0';
+			g->map[y - 1][x] = 'P';
+			g->c_npc[0] = y - 1; 
 		}
 		else if (c == 'E')
 		{
@@ -112,7 +118,9 @@ void	move_down(t_game *g)
 		c = g->map[y + 1][x];
 		if (c == 'C')
 		{
-			//
+			g->map[y][x] = '0';
+			g->map[y + 1][x] = 'P';
+			g->c_npc[0] = y + 1; 
 		}
 		else if (c == 'E')
 		{
