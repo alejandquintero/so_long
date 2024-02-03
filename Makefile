@@ -6,7 +6,7 @@
 #    By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/22 21:16:17 by aquinter          #+#    #+#              #
-#    Updated: 2024/02/03 01:29:24 by aquinter         ###   ########.fr        #
+#    Updated: 2024/02/03 15:27:05 by aquinter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC =   ${PATH_UTILS}/get_next_line.c \
 		${PATH_UTILS}/ft_itoa.c \
 		${PATH_VALIDATIONS}/file_validator.c \
 		${PATH_VALIDATIONS}/map_validator.c \
+		${PATH_VALIDATIONS}/backtracking.c \
 		${PATH_GAMEPLAY}/game_init.c \
 		${PATH_GAMEPLAY}/moves.c \
 		${PATH_GAMEPLAY}/check_exit.c \

@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:08:03 by aquinter          #+#    #+#             */
-/*   Updated: 2024/02/03 00:55:25 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/03 20:02:05 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ void	close_window(t_game *game)
 void	finish_game(t_game *game)
 {
 	free_map((void **)game->map, game->height);
+	free_map((void **)game->map_dup, game->height);
 	free(game);
 }

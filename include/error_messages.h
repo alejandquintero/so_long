@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 22:14:06 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/25 19:39:48 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/03 19:38:52 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@
 # define NO_PLAYER "Error\nThe map must have a player position"
 # define NO_EXIT "Error\nThe map must have an exit position"
 # define NO_COLLECTABLES "Error\nThe map must have at least one collectable"
+# define NO_PLAYLABLE "Error\nThe map is not playlable"
 
 #endif

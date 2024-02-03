@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 21:19:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/02/03 11:54:22 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/03 22:21:11 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	move_left(t_game *g)
 	int	y;
 	int	c;
 
-	y = g->c_npc[0];
-	x = g->c_npc[1];
+	y = g->y_player;
+	x = g->x_player;
 	if (g->map[y][x - 1] != '1')
 	{
 		c = g->map[y][x - 1];
@@ -37,14 +37,14 @@ void	move_left(t_game *g)
 		{
 			g->map[y][x] = '0';
 			g->map[y][x - 1] = 'P';
-			g->c_npc[1] = x - 1;
+			g->x_player = x - 1;
 			g->moves++;
 			if (g->moves % 2 == 0)
 				g->npc = g->npcl;
 			else
 				g->npc = g->npclm;
 			if (c == 'C')
-				g->collectables--;
+				g->coins--;
 			print_moves(g);
 		}
 		else if (c == 'E')
@@ -59,8 +59,8 @@ void	move_right(t_game *g)
 	int	y;
 	int	c;
 
-	y = g->c_npc[0];
-	x = g->c_npc[1];
+	y = g->y_player;
+	x = g->x_player;
 	if (g->map[y][x + 1] != '1')
 	{
 		c = g->map[y][x + 1];
@@ -68,14 +68,14 @@ void	move_right(t_game *g)
 		{
 			g->map[y][x] = '0';
 			g->map[y][x + 1] = 'P';
-			g->c_npc[1] = x + 1;
+			g->x_player = x + 1;
 			g->moves++;
 			if (g->moves % 2 == 0)
 				g->npc = g->npcs;
 			else
 				g->npc = g->npcm;
 			if (c == 'C')
-				g->collectables--;
+				g->coins--;
 			print_moves(g);
 		}
 		else if (c == 'E')
@@ -90,8 +90,8 @@ void	move_up(t_game *g)
 	int	y;
 	int	c;
 
-	y = g->c_npc[0];
-	x = g->c_npc[1];
+	y = g->y_player;
+	x = g->x_player;
 	if (g->map[y - 1][x] != '1')
 	{
 		c = g->map[y - 1][x];
@@ -99,14 +99,14 @@ void	move_up(t_game *g)
 		{
 			g->map[y][x] = '0';
 			g->map[y - 1][x] = 'P';
-			g->c_npc[0] = y - 1;
+			g->y_player = y - 1;
 			g->moves++;
 			if (g->moves % 2 == 0)
 				g->npc = g->npcu;
 			else
 				g->npc = g->npcum;
 			if (c == 'C')
-				g->collectables--;
+				g->coins--;
 			print_moves(g);
 		}
 		else if (c == 'E')
@@ -121,8 +121,8 @@ void	move_down(t_game *g)
 	int	y;
 	int	c;
 
-	y = g->c_npc[0];
-	x = g->c_npc[1];
+	y = g->y_player;
+	x = g->x_player;
 	if (g->map[y + 1][x] != '1')
 	{
 		c = g->map[y + 1][x];
@@ -130,14 +130,14 @@ void	move_down(t_game *g)
 		{
 			g->map[y][x] = '0';
 			g->map[y + 1][x] = 'P';
-			g->c_npc[0] = y + 1;
+			g->y_player = y + 1;
 			g->moves++;
 			if (g->moves % 2 == 0)
 				g->npc = g->npcd;
 			else
 				g->npc = g->npcdm;
 			if (c == 'C')
-				g->collectables--;
+				g->coins--;
 			print_moves(g);
 		}
 		else if (c == 'E')

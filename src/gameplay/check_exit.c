@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 01:24:48 by aquinter          #+#    #+#             */
-/*   Updated: 2024/02/03 11:54:44 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/03 22:21:36 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	check_exit(t_game *g)
 {
-	if (g->collectables == 0)
+	if (g->coins == 0)
 	{
 		g->moves++;
 		print_moves(g);

@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:30:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/02/03 00:30:03 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/03 22:18:40 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,23 @@ void	init_struct(char *content)
 		exit(0);
 	}
 	g->map = ft_split(content, '\n');
-	free(content);
 	if (!g->map)
 	{
 		ft_print_msg(SYS_MATRIX_ERROR);
 		exit(0);
 	}
+	g->map_dup = ft_split(content, '\n');
+	if (!g->map_dup)
+		free_game_error(g, SYS_UNEXPECTED_ERROR, 0);
+	free(content);
 	g->width = 0;
 	g->height = 0;
 	g->moves = 0;
-	g->p_npc = 0;
-	g->c_npc[0] = 0;
-	g->c_npc[1] = 0;
+	g->player = 0;
+	g->y_player = 0;
+	g->x_player = 0;
 	g->exit = 0;
-	g->allow_exit = 0;
-	g->collectables = 0;
+	g->coins = 0;
 	g->mlx = NULL;
 	g->win = NULL;
 	g->win_x = 0;
