@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 21:19:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/02/03 01:28:56 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/03 11:54:22 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	move_right(t_game *g)
 		{
 			g->map[y][x] = '0';
 			g->map[y][x + 1] = 'P';
-			g->c_npc[1] = x + 1; 
+			g->c_npc[1] = x + 1;
 			g->moves++;
 			if (g->moves % 2 == 0)
 				g->npc = g->npcs;
@@ -143,5 +143,5 @@ void	move_down(t_game *g)
 		else if (c == 'E')
 			check_exit(g);
 		print_map(g);
-	}	
+	}
 }

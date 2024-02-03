@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 21:45:30 by aquinter          #+#    #+#             */
-/*   Updated: 2024/02/03 01:18:33 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/03 11:50:28 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	print_map(t_game *g)
 	}
 }
 
-int on_destroy(t_game *g)
+int	on_destroy(t_game *g)
 {
 	close_window(g);
 	finish_game(g);
@@ -61,7 +61,7 @@ int	on_keypress(int keycode, t_game *g)
 		finish_game(g);
 		exit(0);
 	}
-	else if (keycode == XK_a || keycode == XK_A )
+	else if (keycode == XK_a || keycode == XK_A)
 		move_left(g);
 	else if (keycode == XK_d || keycode == XK_D)
 		move_right(g);
