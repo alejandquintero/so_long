@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:08:03 by aquinter          #+#    #+#             */
-/*   Updated: 2024/02/01 22:55:52 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/03 00:55:25 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,14 @@ void	free_game_error(t_game *game, char	*msg, int exit_status)
 void	close_window(t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->block);
-	mlx_destroy_image(game->mlx, game->i_npc);
+	mlx_destroy_image(game->mlx, game->npcs);
+	mlx_destroy_image(game->mlx, game->npcm);
+	mlx_destroy_image(game->mlx, game->npcl);
+	mlx_destroy_image(game->mlx, game->npclm);
+	mlx_destroy_image(game->mlx, game->npcd);
+	mlx_destroy_image(game->mlx, game->npcdm);
+	mlx_destroy_image(game->mlx, game->npcu);
+	mlx_destroy_image(game->mlx, game->npcum);
 	mlx_destroy_image(game->mlx, game->grass);
 	mlx_destroy_image(game->mlx, game->castle);
 	mlx_destroy_image(game->mlx, game->coin);

@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:30:25 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/30 21:08:00 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/03 01:15:23 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	validate_game_content(t_game *g)
 		free_game_error(g, NO_EXIT, 0);
 	if (g->collectables == 0)
 		free_game_error(g, NO_COLLECTABLES, 0);
-	printf("Collectables %d\n", g->collectables);
-	printf("w %d h%d\n", g->width, g->height);
 	init_window(g);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 21:45:30 by aquinter          #+#    #+#             */
-/*   Updated: 2024/02/01 23:01:56 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/03 01:18:33 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	draw_img(t_game *g, int x, int y)
 	else if (g->map[y][x] == 'C')
 		mlx_put_image_to_window(g->mlx, g->win, g->coin, x * 50, y * 50);
 	else if (g->map[y][x] == 'P')
-		mlx_put_image_to_window(g->mlx, g->win, g->i_npc, x * 50, y * 50);	
+		mlx_put_image_to_window(g->mlx, g->win, g->npc, x * 50, y * 50);
 	else if (g->map[y][x] == 'E')
 		mlx_put_image_to_window(g->mlx, g->win, g->castle, x * 50, y * 50);
 }
@@ -82,11 +82,19 @@ void	init_window(t_game *g)
 	g->mlx = mlx_init();
 	if (!g->mlx)
 		free_game_error(g, SYS_UNEXPECTED_ERROR, 1);
-	g->block = mlx_xpm_file_to_image(g->mlx, "xpm/Brick.xpm", &w, &h);
-	g->i_npc = mlx_xpm_file_to_image(g->mlx, "xpm/mario-new.xpm", &w, &h);
-	g->grass = mlx_xpm_file_to_image(g->mlx, "xpm/grass-50.xpm", &w, &h);
-	g->castle = mlx_xpm_file_to_image(g->mlx, "xpm/castle-new.xpm", &w, &h);
+	g->block = mlx_xpm_file_to_image(g->mlx, "xpm/brick.xpm", &w, &h);
+	g->npcs = mlx_xpm_file_to_image(g->mlx, "xpm/npc.xpm", &w, &h);
+	g->npcm = mlx_xpm_file_to_image(g->mlx, "xpm/npcmove.xpm", &w, &h);
+	g->npcl = mlx_xpm_file_to_image(g->mlx, "xpm/npcl.xpm", &w, &h);
+	g->npclm = mlx_xpm_file_to_image(g->mlx, "xpm/npclmove.xpm", &w, &h);
+	g->npcd = mlx_xpm_file_to_image(g->mlx, "xpm/npcd.xpm", &w, &h);
+	g->npcdm = mlx_xpm_file_to_image(g->mlx, "xpm/npcdmove.xpm", &w, &h);
+	g->npcu = mlx_xpm_file_to_image(g->mlx, "xpm/npcu.xpm", &w, &h);
+	g->npcum = mlx_xpm_file_to_image(g->mlx, "xpm/npcumove.xpm", &w, &h);
+	g->grass = mlx_xpm_file_to_image(g->mlx, "xpm/grass.xpm", &w, &h);
+	g->castle = mlx_xpm_file_to_image(g->mlx, "xpm/castle.xpm", &w, &h);
 	g->coin = mlx_xpm_file_to_image(g->mlx, "xpm/coin.xpm", &w, &h);
+	g->npc = g->npcs;
 	g->win_x = g->width * 50;
 	g->win_y = g->height * 50;
 	g->win = mlx_new_window(g->mlx, g->win_x, g->win_y, "so_long");

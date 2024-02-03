@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 21:23:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/02/01 22:54:52 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/03 01:28:18 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_game
 	char					**map;
 	int						width;
 	int						height;
+	int						moves;
 	int						p_npc;
 	int						c_npc[2];
 	int						exit;
@@ -45,7 +46,15 @@ typedef struct s_game
 	int						win_x;
 	int						win_y;
 	void					*block;
-	void					*i_npc;
+	void					*npc;
+	void					*npcs;
+	void					*npcm;
+	void					*npcl;
+	void					*npclm;
+	void					*npcd;
+	void					*npcdm;
+	void					*npcu;
+	void					*npcum;
 	void					*grass;
 	void					*castle;
 	void					*coin;
@@ -82,5 +91,7 @@ void	move_right(t_game *g);
 void	move_up(t_game *g);
 void	move_down(t_game *g);
 void	print_map(t_game *g);
+void	print_moves(t_game *g);
+void	check_exit(t_game *g);
 
 #endif
