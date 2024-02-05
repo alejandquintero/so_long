@@ -6,11 +6,11 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 14:42:17 by aquinter          #+#    #+#             */
-/*   Updated: 2024/02/03 23:12:22 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/05 21:34:58 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../inc/so_long.h"
 
 int	valid_move(char c)
 {

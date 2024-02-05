@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 21:44:00 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/02 22:06:07 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/05 21:37:33 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../inc/so_long.h"
 
 int	main(int argc, char *argv[])
 {
 	if (argc != 2)
-		write(1, "Error\nUsage ./so_long \"maps/map.ber\"", 36);
+		ft_print(ERROR_USAGE);
 	else
-	{
-		validate_file(argv[1]);
-	}
+		read_file(argv[1]);
 	return (0);
 }

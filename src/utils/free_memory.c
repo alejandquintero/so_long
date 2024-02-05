@@ -6,11 +6,11 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:08:03 by aquinter          #+#    #+#             */
-/*   Updated: 2024/02/03 20:02:05 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/05 20:32:46 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../inc/so_long.h"
 
 void	free_map(void **mem, size_t size)
 {
@@ -28,7 +28,7 @@ void	free_map(void **mem, size_t size)
 void	free_game_error(t_game *game, char	*msg, int exit_status)
 {
 	finish_game(game);
-	ft_print_msg(msg);
+	ft_print(msg);
 	exit(exit_status);
 }
 
@@ -53,7 +53,9 @@ void	close_window(t_game *game)
 
 void	finish_game(t_game *game)
 {
-	free_map((void **)game->map, game->height);
-	free_map((void **)game->map_dup, game->height);
+	if (game->map)
+		free_map((void **)game->map, game->height);
+	if (game->map_dup)
+		free_map((void **)game->map_dup, game->height);
 	free(game);
 }

@@ -6,11 +6,11 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:30:25 by aquinter          #+#    #+#             */
-/*   Updated: 2024/02/03 22:18:13 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/05 21:55:09 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../inc/so_long.h"
 
 void	validate_game_content(t_game *g)
 {

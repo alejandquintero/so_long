@@ -6,11 +6,11 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 22:34:32 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/02 18:09:52 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:48:52 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../inc/so_long.h"
 
 char	*ft_strrchr(const char *s, int c)
 {

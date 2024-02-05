@@ -6,11 +6,11 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 18:01:36 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/02 18:09:52 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:48:52 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../inc/so_long.h"
 
 static size_t	len_word(char const *s, char c)
 {

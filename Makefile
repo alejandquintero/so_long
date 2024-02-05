@@ -6,7 +6,7 @@
 #    By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/22 21:16:17 by aquinter          #+#    #+#              #
-#    Updated: 2024/02/03 15:27:05 by aquinter         ###   ########.fr        #
+#    Updated: 2024/02/05 21:32:47 by aquinter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,15 +33,16 @@ SRC =   ${PATH_UTILS}/get_next_line.c \
 		${PATH_UTILS}/ft_calloc.c \
 		${PATH_UTILS}/ft_bzero.c \
 		${PATH_UTILS}/ft_isascii.c \
-		${PATH_UTILS}/ft_print_msg.c \
+		${PATH_UTILS}/ft_print.c \
 		${PATH_UTILS}/ft_itoa.c \
-		${PATH_VALIDATIONS}/file_validator.c \
+		${PATH_VALIDATIONS}/content_validator.c \
 		${PATH_VALIDATIONS}/map_validator.c \
 		${PATH_VALIDATIONS}/backtracking.c \
 		${PATH_GAMEPLAY}/game_init.c \
+		${PATH_GAMEPLAY}/events.c \
 		${PATH_GAMEPLAY}/moves.c \
 		${PATH_GAMEPLAY}/check_exit.c \
-		src/init.c 
+		src/so_long.c 
 
 OBJ = ${SRC:%.c=%.o}
 

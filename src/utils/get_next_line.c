@@ -6,11 +6,11 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 19:04:28 by aquinter          #+#    #+#             */
-/*   Updated: 2024/01/13 19:33:13 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:48:52 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../inc/so_long.h"
 
 char	*reset_cache(char **cache)
 {
