@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:30:25 by aquinter          #+#    #+#             */
-/*   Updated: 2024/02/06 21:41:20 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/06 22:34:55 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	validate_game_content(t_game *g)
 {
-	if (g->width > 38 || g->height > 20)
-		free_game_error(g, LARGE_MAP, 0);
 	if (!g->player)
 		free_game_error(g, NO_PLAYER, 0);
 	if (g->player > 1)
@@ -26,6 +24,8 @@ void	validate_game_content(t_game *g)
 		free_game_error(g, MORE_THAN_ONE_EXIT, 0);
 	if (g->coins == 0)
 		free_game_error(g, NO_COLLECTABLES, 0);
+	if (g->width > 38 || g->height > 20)
+		free_game_error(g, LARGE_MAP, 0);
 	if (!is_playlable(g))
 		free_game_error(g, NO_PLAYLABLE, 0);
 	init_window(g);
