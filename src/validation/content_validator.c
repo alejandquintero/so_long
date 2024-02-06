@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:30:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/02/05 21:55:59 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/06 22:15:33 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@ void	init_struct(char *content)
 	}
 	g->map = ft_split(content, '\n');
 	if (!g->map)
-		free_game_error(g, SYS_UNEXPECTED_ERROR, 1);
-	g->map_dup = ft_split(content, '\n');
-	if (!g->map_dup)
 		free_game_error(g, SYS_UNEXPECTED_ERROR, 1);
 	free(content);
 	g->width = 0;
@@ -95,7 +92,7 @@ void	read_map(int fd)
 		ft_print(MAP_NONEXISTENT);
 }
 
-void	read_file(char *file)
+void	init(char *file)
 {
 	int	fd;
 

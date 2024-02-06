@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 22:14:06 by aquinter          #+#    #+#             */
-/*   Updated: 2024/02/05 20:58:21 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/06 21:48:26 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 # define NO_COLLECTABLES "Error\nThe map must have at least one collectable"
 # define NO_PLAYLABLE "Error\nThe map is not playlable"
 # define ERROR_USAGE "Error\nUsage ./so_long \"maps/map.ber\""
-# define VICTORY "You have won!\n"
+# define LARGE_MAP "Error\nVery large map"
+# define VICTORY "You have won 🥳!\n"
+# define ERROR_BORDERS "Error\nThe map borders must be walls"
+# define ERROR_CHARACTERS "Error\nThe map contains invalid characters"
 
 #endif

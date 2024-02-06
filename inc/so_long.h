@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 21:23:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/02/05 21:54:47 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/06 22:24:05 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@
 typedef struct s_game
 {
 	char					**map;
-	char					**map_dup;
 	int						width;
 	int						height;
 	int						moves;
@@ -77,11 +76,12 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
+char	**map_copy(t_game *g);
 void	*ft_calloc(size_t count, size_t size);
 void	read_map(int fd);
 void	ft_bzero(void *s, size_t n);
 void	ft_print(char *msg);
-void	read_file(char *file);
+void	init(char *file);
 void	validate_map(t_game *g);
 void	free_map(void **mem, size_t size);
 void	close_window(t_game *game);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   backtracking.c                                     :+:      :+:    :+:   */
+/*   is_playlable.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 14:42:17 by aquinter          #+#    #+#             */
-/*   Updated: 2024/02/05 21:34:58 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/06 22:24:42 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,7 @@ int	autoplay(char **map, t_autoplay_params *a, int y, int x)
 	if (x > 0 && valid_move(map[y][x - 1]))
 		if (autoplay(map, a, y, x - 1))
 			return (1);
-	if (*(a->coins) == 0 && *(a->exit) == 1)
-		return (1);
-	return (0);
+	return ((*(a->coins) == 0 && *(a->exit) == 1));
 }
 
 int	is_playlable(t_game *g)
@@ -56,16 +54,18 @@ int	is_playlable(t_game *g)
 	int					coins;
 	int					exit;
 	int					res;
+	char				**map;
 
 	a = malloc(sizeof(t_autoplay_params));
 	if (!a)
 		free_game_error(g, SYS_UNEXPECTED_ERROR, 0);
+	map = map_copy(g);
 	exit = 0;
 	coins = g->coins;
 	a->exit = &exit;
 	a->coins = &coins;
-	coins = g->coins;
-	res = autoplay(g->map_dup, a, g->y_player, g->x_player);
+	res = autoplay(map, a, g->y_player, g->x_player);
 	free(a);
+	free_map((void **)map, g->height);
 	return (res);
 }

@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_exit.c                                       :+:      :+:    :+:   */
+/*   map_copy.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 01:24:48 by aquinter          #+#    #+#             */
-/*   Updated: 2024/02/06 21:49:08 by aquinter         ###   ########.fr       */
+/*   Created: 2024/02/06 21:57:18 by aquinter          #+#    #+#             */
+/*   Updated: 2024/02/06 22:25:16 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
-void	check_exit(t_game *g)
+char	**map_copy(t_game *g)
 {
-	if (g->coins == 0)
+	int		i;
+	char	**copy;
+
+	copy = ft_calloc(g->height + 1, sizeof(char *));
+	if (!copy)
+		free_game_error(g, SYS_UNEXPECTED_ERROR, 1);
+	i = 0;
+	while (g->map[i])
 	{
-		g->moves++;
-		print_moves(g);
-		ft_print(VICTORY);
-		close_window(g);
-		finish_game(g);
-		exit(0);
+		copy[i] = ft_calloc(g->width + 1, sizeof(char));
+		if (!copy[i])
+		{
+			free_map((void **)copy, (size_t)i);
+			free_game_error(g, SYS_UNEXPECTED_ERROR, 1);
+		}
+		ft_strlcpy(copy[i], g->map[i], g->width + 1);
+		i++;
 	}
+	return (copy);
 }

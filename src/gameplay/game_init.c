@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 21:45:30 by aquinter          #+#    #+#             */
-/*   Updated: 2024/02/05 20:38:40 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/02/06 21:07:17 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,8 @@ void	print_map(t_game *g)
 	}
 }
 
-void	init_images(t_game *g)
+void	init_images(t_game *g, int w, int h)
 {
-	int	w;
-	int	h;
-
-	w = 50;
-	h = 50;
 	g->block = mlx_xpm_file_to_image(g->mlx, "xpm/brick.xpm", &w, &h);
 	g->npcs = mlx_xpm_file_to_image(g->mlx, "xpm/npc.xpm", &w, &h);
 	g->npcm = mlx_xpm_file_to_image(g->mlx, "xpm/npcmove.xpm", &w, &h);
@@ -68,6 +63,11 @@ void	init_images(t_game *g)
 
 void	init_window(t_game *g)
 {
+	int	w;
+	int	h;
+
+	w = 50;
+	h = 50;
 	g->mlx = mlx_init();
 	if (!g->mlx)
 		free_game_error(g, SYS_UNEXPECTED_ERROR, 1);
@@ -77,7 +77,7 @@ void	init_window(t_game *g)
 		mlx_destroy_display(g->mlx);
 		free_game_error(g, SYS_UNEXPECTED_ERROR, 0);
 	}
-	init_images(g);
+	init_images(g, w, h);
 	print_map(g);
 	mlx_hook(g->win, DestroyNotify, StructureNotifyMask, &on_destroy, g);
 	mlx_key_hook(g->win, on_keypress, g);
